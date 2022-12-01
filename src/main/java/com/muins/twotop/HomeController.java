@@ -59,7 +59,6 @@ public class HomeController {
 	@Autowired
 	private JavaMailSender mailSender;
 	
-	
 	@RequestMapping(value = "/home", method = RequestMethod.GET)
 	public ModelAndView home(HttpSession session, HttpServletRequest request, HttpServletResponse response,
 			ModelAndView mv, BoardVO bo, UserVO vo) {

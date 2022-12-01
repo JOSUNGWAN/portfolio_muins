@@ -35,7 +35,7 @@ public class BoardController {
 	ReplyService replyService;
 
 	//---board---------------------------------------------------------------------------------
-	
+
 	// 일반게시판 전체목록
 	@RequestMapping(value = "/boardtotal")
 	public ModelAndView boardtotal(HttpServletRequest request, HttpServletResponse response,
@@ -71,7 +71,7 @@ public class BoardController {
 		mv.setViewName("/boardFolder/boardcrilist");
 		return mv;
 	} // 일반게시판 페이징전체목록
-	
+
 	// 새글등록폼
 	@RequestMapping(value = "/boardinsertform")
 	public ModelAndView boardinsertform(HttpServletRequest request, HttpServletResponse response, ModelAndView mv) {
@@ -98,7 +98,7 @@ public class BoardController {
 	// 내글 수정
 	@RequestMapping(value = "/bupdate", method = RequestMethod.POST)
 	public ModelAndView bupdate(HttpServletRequest request, HttpServletResponse response, 
-									ModelAndView mv, BoardVO vo) {
+			ModelAndView mv, BoardVO vo) {
 
 		String uri = "redirect:bcrilist";
 		mv.addObject("bselectone",vo);
@@ -170,14 +170,14 @@ public class BoardController {
 		mv.setViewName(uri);
 		return mv;
 	} // 글상세보기 & 조회수증가 & 댓글갯수 확인
-	
+
 	// 추천수 증가
 	@RequestMapping(value = "/bvoteUp")
 	public void bvoteUp(HttpServletRequest request, HttpServletResponse response, 
 			BoardVO vo) {
 		service.bvoteUp(vo);
 	} // 추천수 증가
-	
+
 	// 추천수 감소
 	@RequestMapping(value = "/bvoteDown")
 	public void bvoteDown(HttpServletRequest request, HttpServletResponse response, 
@@ -185,11 +185,11 @@ public class BoardController {
 		service.bvoteDown(vo);
 	}
 	// 추천수 감소
-	
+
 	//---board---------------------------------------------------------------------------------
-	
+
 	//---voteTable-------------------------------------------------------------------------------
-	
+
 	@RequestMapping(value = "/bvoteTableUp")
 	public ModelAndView bvoteTableUp(HttpServletRequest request, HttpServletResponse response, 
 			VoteTableVO vo) {
@@ -219,8 +219,8 @@ public class BoardController {
 		return null; 
 	}
 	//---voteTable-------------------------------------------------------------------------------
-	
-	
+
+
 
 
 
@@ -243,7 +243,7 @@ public class BoardController {
 		return mv;
 
 	} // 작곡게시판 전체목록
-	
+
 	// 작곡게시판 페이징전체목록
 	@RequestMapping(value = "/pdbcrilist")
 	public ModelAndView pdbcrilist(HttpServletRequest request, HttpServletResponse response, 
@@ -268,12 +268,12 @@ public class BoardController {
 		mv.setViewName("/boardFolder/pdboardinsertform");
 		return mv;
 	}// 새글등록폼
-	
+
 	// 새글등록 & 작곡게시판 노래업로드
 	@RequestMapping(value = "/pdbinsert", method = RequestMethod.POST)
 	public ModelAndView pdbinsert(HttpServletRequest request, HttpServletResponse response, 
 			ModelAndView mv, PdboardVO vo, RedirectAttributes rttr)throws IOException {
- 
+
 		String uri = "redirect:pdbcrilist";
 		// 폴더 확인 및 생성 & 파일업로드
 		String realPath = request.getRealPath("/"); 
@@ -284,7 +284,7 @@ public class BoardController {
 			realPath += "resources\\userMusicFile\\" + vo.getId()+"\\";
 
 		File f2 = new File(realPath);
-		
+
 		if ( !f2.exists() ) f2.mkdir();
 		String file2 = null; 
 
@@ -311,10 +311,10 @@ public class BoardController {
 	// 내글 수정
 	@RequestMapping(value = "/pdbupdate", method = RequestMethod.POST)
 	public ModelAndView pdbupdate(HttpServletRequest request, HttpServletResponse response, ModelAndView mv, PdboardVO vo)throws IOException {
-		
+
 		String uri = "redirect:pdbcrilist";
 		mv.addObject("pdbselectone",vo);
-		
+
 		// 폴더 확인 및 생성 & 파일업로드
 		String realPath = request.getRealPath("/");
 
@@ -381,7 +381,7 @@ public class BoardController {
 			if(!vo.getId().equals(loginID) && !"U".equals(request.getParameter("jCode"))) {		
 				service.pdbcountUp(vo);		
 			}
-			
+
 			//추천 정보 확인
 			bo.setId((String)request.getSession().getAttribute("loginID"));
 			if(service.pdbvoteTableSelect(bo) > 0) {
@@ -389,10 +389,10 @@ public class BoardController {
 			} else {
 				mv.addObject("vote","F");	
 			}
-			
+
 			int rcount = service.pdbrCount(vo);
 			mv.addObject("rcount",rcount);
-			
+
 			if("U".equals(request.getParameter("jCode"))) {
 				uri = "/boardFolder/pdboardupdate";
 			}
@@ -405,21 +405,21 @@ public class BoardController {
 		return mv;
 	} // 글상세보기 & 조회수증가 & 댓글갯수 확인
 
-	
+
 	// 추천수 증가
 	@RequestMapping(value = "/pdbvoteUp")
 	public void pdbvoteUp(HttpServletRequest request, HttpServletResponse response, 
 			PdboardVO vo) {
 		service.pdbvoteUp(vo);
 	} // 추천수 증가
-	
+
 	// 추천수 감소
 	@RequestMapping(value = "/pdbvoteDown")
 	public void pdbvoteDown(HttpServletRequest request, HttpServletResponse response, 
 			PdboardVO vo) {
 		service.pdbvoteDown(vo);
 	} // 추천수 감소
-	
+
 
 	// 작곡게시판 노래 듣기
 	@RequestMapping(value = "/pdselectMusic")
@@ -431,28 +431,28 @@ public class BoardController {
 		mv.setViewName("jsonView");
 		return mv;
 	} // 작곡게시판 노래 듣기
-	
+
 	//---pdboard-------------------------------------------------------------------------------
-	
-	
+
+
 	//---admin---------------------------------------------------------------------------------
 	// 관리자용 일반게시판 페이징전체목록
 	@RequestMapping(value = "/adminBcrilist")
 	public ModelAndView adminBcrilist(HttpServletRequest request, HttpServletResponse response, 
 			ModelAndView mv, Criteria cri, PageMaker pageMaker) {
-		
+
 		cri.setSnoEno();
 		mv.addObject("boardlist", service.bsearchList(cri));	
-		
+
 		// 3) View 처리
 		pageMaker.setCri(cri);
 		pageMaker.setTotalRowsCount(service.bsearchCount(cri));
-		
+
 		mv.addObject("pageMaker", pageMaker);
 		mv.setViewName("/admin/admin_boardcrilist");
 		return mv;
 	} // 관리자용 일반게시판 페이징전체목록
-	
+
 	// 관리자용 일반게시판 글삭제
 	@RequestMapping(value = "/adminBdelete")
 	public ModelAndView adminBdelete(HttpServletRequest request, HttpServletResponse response, 
@@ -469,42 +469,42 @@ public class BoardController {
 		mv.setViewName(uri);
 		return mv;
 	} // 관리자용 일반게시판 글삭제
-	
+
 	// 관리자용 작곡게시판 페이징전체목록
-		@RequestMapping(value = "/adminpdBcrilist")
-		public ModelAndView adminpdBcrilist(HttpServletRequest request, HttpServletResponse response, 
-				ModelAndView mv, Criteria cri, PageMaker pageMaker) {
+	@RequestMapping(value = "/adminpdBcrilist")
+	public ModelAndView adminpdBcrilist(HttpServletRequest request, HttpServletResponse response, 
+			ModelAndView mv, Criteria cri, PageMaker pageMaker) {
 
-			cri.setSnoEno();
+		cri.setSnoEno();
 
-			mv.addObject("pdboardlist", service.pdbsearchList(cri)); // ver02
+		mv.addObject("pdboardlist", service.pdbsearchList(cri)); // ver02
 
-			pageMaker.setCri(cri);
-			pageMaker.setTotalRowsCount(service.pdbsearchCount(cri));	 // ver02: 조건과 일치하는 Rows의 갯수
+		pageMaker.setCri(cri);
+		pageMaker.setTotalRowsCount(service.pdbsearchCount(cri));	 // ver02: 조건과 일치하는 Rows의 갯수
 
-			mv.addObject("pageMaker", pageMaker);
-			mv.setViewName("/admin/admin_pdboardcrilist");
-			return mv;
-		} // 작곡게시판 페이징전체목록
-		
-		// 관리자용 작곡게시판 글삭제
-		@RequestMapping(value = "/adminpdBdelete")
-		public ModelAndView adminpdBdelete(HttpServletRequest request, HttpServletResponse response, 
-				ModelAndView mv, PdboardVO vo, RedirectAttributes rttr) {
+		mv.addObject("pageMaker", pageMaker);
+		mv.setViewName("/admin/admin_pdboardcrilist");
+		return mv;
+	} // 작곡게시판 페이징전체목록
 
-			String uri = "redirect:adminpdBcrilist";
+	// 관리자용 작곡게시판 글삭제
+	@RequestMapping(value = "/adminpdBdelete")
+	public ModelAndView adminpdBdelete(HttpServletRequest request, HttpServletResponse response, 
+			ModelAndView mv, PdboardVO vo, RedirectAttributes rttr) {
 
-			if(service.pdbdelete(vo) > 0) { 
-				rttr.addFlashAttribute("message", "- 글삭제 성공 -");
-			} else {
-				rttr.addFlashAttribute("message", "- 글삭제 실패, 다시 하세요 -");
-			}
+		String uri = "redirect:adminpdBcrilist";
 
-			mv.setViewName(uri);
-			return mv;
-		} // 관리자용 작곡게시판 글삭제
-	
-	
+		if(service.pdbdelete(vo) > 0) { 
+			rttr.addFlashAttribute("message", "- 글삭제 성공 -");
+		} else {
+			rttr.addFlashAttribute("message", "- 글삭제 실패, 다시 하세요 -");
+		}
+
+		mv.setViewName(uri);
+		return mv;
+	} // 관리자용 작곡게시판 글삭제
+
+
 
 }
 
