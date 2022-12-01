@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mapperInterface.UserMapper">
+
+	<!-- Select Total -->
+	<select id="userTotal" resultType="vo.UserVO">
+		select * from user
+	</select>
+
+	<select id="userSelectOne" resultType="vo.UserVO">
+		select * from user
+		where id = #{id}
+	</select>	
+
+	<insert id="userInsert">
+		insert into user(id, password, name, email, phone, address, nickname,
+		birthdate)
+		values( #{id}, #{password}, #{name}, #{email}, #{phone}, #{address}
+		,#{nickname}, #{birthdate})
+	</insert>
+
+	<update id="userPasswordChange">
+		update user
+		set password = #{password}
+		where id=#{id}
+	</update>
+	
+	<update id="userUpdate">
+		update user
+		set name=#{name}, email=#{email}, nickname=#{nickname},
+		address=#{address}, birthdate=#{birthdate}, phone=#{phone}
+		where id=#{id}
+	</update>
+	
+	<update id="userGradeUpdate">
+		update user
+		set usergrade=#{usergrade}
+		where id=#{id}
+	</update>
+
+	<delete id="userDelete">
+		delete from user where id=#{id}
+	</delete>
+	
+	<!-- ㅡㅡㅡㅡㅡㅡpayTableㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ -->
+	<insert id="payDate">
+		insert into paydate (id, usergrade, end_date) values
+		(#{id}, #{usergrade}, DATE_ADD(CURRENT_TIMESTAMP, INTERVAL 1 Month));
+	</insert>
+	
+	<select id="paydateSelectOne" resultType="vo.PayDateVO">
+		select * from paydate
+		where id = #{id} and seq = (select IFNUll(max(seq),0) from paydate where id = #{id})
+	</select>
+
+</mapper>

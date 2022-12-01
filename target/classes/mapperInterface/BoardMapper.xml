@@ -1,0 +1,290 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mapperInterface.BoardMapper">
+	<!-- ㅡㅡㅡㅡㅡㅡ통합검색ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ -->
+
+	<sql id="bsearchall">
+		<if test="keywords != null">
+			<bind name="keyVal" value="'%'+keywords+'%'" />
+		</if>
+		title like #{keyVal}
+		or id like #{keyVal}
+		or content like #{keyVal}
+	</sql>
+
+	<select id="bmainSearch" resultType="vo.BoardVO">
+		select * from board
+		where
+		<include refid="bsearchall"></include>
+		order by seq desc
+		limit 0, 10
+	</select>
+
+	<sql id="pdbsearchall">
+		<if test="keywords != null">
+			<bind name="keyVal" value="'%'+keywords+'%'" />
+		</if>
+		songname like #{keyVal}
+		or id like #{keyVal}
+		or content like #{keyVal}
+	</sql>
+	<select id="pdbmainSearch" resultType="vo.PdboardVO">
+		select * from pdboard
+		where
+		<include refid="pdbsearchall"></include>
+		order by seq desc
+		limit 0, 10
+	</select>
+
+	<!-- ㅡㅡㅡㅡㅡㅡ통합검색ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ -->
+
+
+	<!-- ㅡㅡㅡㅡㅡㅡboardㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ -->
+
+	<sql id="search">
+		<if test="keyword != null">
+			<bind name="keyVal" value="'%'+keyword+'%'" />
+		</if>
+		<choose>
+			<when test="searchType=='t'.toString()">
+				and title like #{keyVal})
+			</when>
+			<when test="searchType=='s'.toString()">
+				and songname like #{keyVal})
+			</when>
+			<when test="searchType=='c'.toString()">
+				and content like #{keyVal})
+			</when>
+			<when test="searchType=='i'.toString()">
+				and id like #{keyVal})
+			</when>
+			<when test="searchType=='r'.toString()">
+				and regdate like #{keyVal})
+			</when>
+			<when test="searchType=='tc'.toString()">
+				and title like #{keyVal}
+				or content like #{keyVal})
+			</when>
+			<when test="searchType=='sc'.toString()">
+				and songname like #{keyVal}
+				or content like #{keyVal})
+			</when>
+			<otherwise>)</otherwise>
+		</choose>
+	</sql>
+
+	<!-- board -->
+	<select id="bsearchList" resultType="vo.BoardVO">
+		select seq, title, id, regdate, cnt, root, step, indent
+		from board
+		where( seq>0
+		<include refid="search"></include>
+		order by root desc, step asc
+		limit #{sno}, #{rowsPerPage}
+	</select>
+
+	<select id="bsearchCount" resultType="int">
+		select count(*) from board
+		where ( seq>0
+		<include refid="search"></include>
+	</select>
+
+	<select id="bcriList" resultType="vo.BoardVO">
+		select seq, title, id, regdate,
+		cnt, root, step, indent
+		from board
+		order by root desc, step asc
+		limit #{sno}, #{rowsPerPage}
+	</select>
+
+	<select id="bcriTotalCount" resultType="int">
+		select count(*) from
+		board
+	</select>
+
+	<select id="boardTotal" resultType="vo.BoardVO">
+		select seq, title, id,
+		regdate, cnt, root, step, indent from board order by root desc,
+		step asc
+	</select>
+
+	<select id="bselectOne" resultType="vo.BoardVO">
+		select * from board where
+		seq=#{seq}
+	</select>
+
+	<update id="bupdate">
+		update board set title=#{title}, content=#{content}
+		where seq=#{seq}
+	</update>
+
+	<insert id="binsert">
+		<selectKey keyProperty="seq" resultType="int" order="BEFORE">
+			select
+			IFNULL(max(seq),0)+1 from board
+		</selectKey>
+		insert into board(seq,title,id,content,root)
+		values(#{seq},#{title},#{id},
+		#{content},#{seq})
+	</insert>
+	
+	<delete id="bdelete">
+		delete from board where
+		<if test="seq == root">root=#{root}</if>
+		<if test="seq != root">seq=#{seq}</if>
+	</delete>
+
+
+	<update id="bcountUp">
+		update board set cnt=cnt+1 where seq=#{seq}
+	</update>
+
+	<select id="brCount" resultType="int">
+		select count(*) from reply where
+		seq=#{seq}
+	</select>
+	
+	<update id="bvoteUp">
+		update board set vote=vote+1 where seq=#{seq}
+	</update>
+	
+	
+	<update id="bvoteDown">
+		update board set vote=vote-1 where seq=#{seq}
+	</update>
+	
+	
+	<select id="homeBoardList" resultType="vo.BoardVO">
+		select * from board order by vote desc
+	</select>
+	
+	
+	<!-- ㅡㅡㅡㅡㅡㅡvoteTableㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ -->
+<!-- board -->	
+	<insert id="bvoteTableUp">
+		insert into bvotetable (id, boardseq) values
+		( #{id}, #{boardseq}) 
+	</insert>
+	
+	<delete id="bvoteTableDown">
+		delete from bvotetable where boardseq=#{boardseq}
+	</delete>
+	
+	<select id="bvoteTableSelect" resultType="int">
+		select count(*) from bvotetable where
+		id=#{id} and boardseq=#{seq}
+	</select>
+	
+<!-- pdboard -->	
+	<insert id="pdbvoteTableUp">
+		insert into pdbvotetable (id, boardseq) values
+		( #{id}, #{boardseq}) 
+	</insert>
+	
+	<delete id="pdbvoteTableDown">
+		delete from pdbvotetable where boardseq=#{boardseq}
+	</delete>
+	
+	<select id="pdbvoteTableSelect" resultType="int">
+		select count(*) from pdbvotetable where
+		id=#{id} and boardseq=#{seq}
+	</select>
+	
+	<!-- ㅡㅡㅡㅡㅡㅡvoteTableㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ -->
+	
+
+
+	<!-- ㅡㅡㅡㅡㅡㅡpdboardㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ -->
+
+
+
+	<!-- pdboard -->
+	<select id="pdbsearchList" resultType="vo.PdboardVO">
+		select seq, songname, id, regdate, cnt, root, step, indent
+		from pdboard
+		where( seq>0
+		<include refid="search"></include>
+		order by root desc, step asc
+		limit #{sno}, #{rowsPerPage}
+	</select>
+
+	<select id="pdbsearchCount" resultType="int">
+		select count(*) from pdboard
+		where ( seq>0
+		<include refid="search"></include>
+	</select>
+
+	<select id="pdbcriList" resultType="vo.PdboardVO">
+		select seq, songname, id,
+		regdate, cnt, root, step, indent
+		from pdboard
+		order by root desc, step asc
+		limit #{sno}, #{rowsPerPage}
+	</select>
+
+	<select id="pdbcriTotalCount" resultType="int">
+		select count(*) from
+		pdboard
+	</select>
+
+	<select id="pdboardTotal" resultType="vo.PdboardVO">
+		select seq, songname, id,
+		regdate, cnt, root, step, indent from pdboard order by root desc, step
+		asc
+	</select>
+	
+	<select id="pdbselectOne" resultType="vo.PdboardVO">
+		select * from pdboard where
+		seq=#{seq}
+	</select>
+
+	<update id="pdbupdate">
+		update pdboard set songname=#{songname},
+		content=#{content}, uploadfile=#{uploadfile} where seq=#{seq}
+	</update>
+	
+	<insert id="pdbinsert">
+		<selectKey keyProperty="seq" resultType="int" order="BEFORE">
+			select
+			IFNULL(max(seq),0)+1 from pdboard
+		</selectKey>
+		insert into pdboard(seq,songname,id,content,root,uploadfile)
+		values(#{seq},#{songname},#{id},
+		#{content},#{seq}, #{uploadfile})
+	</insert>
+
+	<delete id="pdbdelete">
+		delete from pdboard where
+		<if test="seq == root">root=#{root}</if>
+		<if test="seq != root">seq=#{seq}</if>
+	</delete>
+
+	<update id="pdbcountUp">
+		update pdboard set cnt=cnt+1 where seq=#{seq}
+	</update>
+
+	<select id="pdbrCount" resultType="int">
+		select count(*) from pdreply
+		where seq=#{seq}
+	</select>
+	
+	<update id="pdbvoteUp">
+		update pdboard set vote=vote+1 where seq=#{seq}
+	</update>
+	<update id="pdbvoteDown">
+		update pdboard set vote=vote-1 where seq=#{seq}
+	</update>
+
+	<select id="pdhomeBoardList" resultType="vo.PdboardVO">
+		select * from pdboard order by vote desc
+	</select>
+	
+	<select id="pdselectMusic" resultType="vo.PdboardVO">
+		select * from pdboard
+		where seq=#{seq}
+	</select>
+	
+
+
+</mapper>

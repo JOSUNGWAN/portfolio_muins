@@ -1,0 +1,238 @@
+@charset "UTF-8";
+
+/* - boardlist,boardcri - */
+		a {
+        	text-decoration: none;
+        }
+
+        .searchBar {
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+        }
+
+        .crisearch {
+            width: 250px;
+        }
+
+        #searchType,
+        .crisearch {
+            height: 25px;
+        }
+
+        [id="searchBtn"] {
+            border: 1px solid rgb(154, 154, 235);
+            background-color: white;
+            color: rgb(60, 60, 235);
+            height: 30px;
+            line-height: 30px;
+            width: 60px;
+        }
+
+        [id="searchBtn"]:hover {
+            background-color: rgb(93, 93, 240);
+            color: white;
+        }
+
+        [id="searchBtn"]:hover {
+            background-color: rgb(93, 93, 240);
+            font-size: 15px;
+        }
+		.board_maincontainer {
+			text-align: center;
+    		margin: 30px 0px;
+		}
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            border-top: 1px solid #eeeeee;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f0f0f070;
+        }
+
+        th,
+        td {
+            width: 300px;
+            padding: 10px 12px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        td {
+            color: rgb(53, 53, 53);
+        }
+        td>a, .board-footmenu>a {
+        	color: black;
+        	text-decoration: none;
+        }
+
+        th, .bordlist_main :not([id="none"]) {
+            text-align: center;
+        }
+
+        .board-footmenu {
+            height: 30px;
+            line-height: 30px;
+            margin: 0 20px;
+        }
+		.right {
+			text-align: right;
+		}
+		
+/* - boardinsert - */
+		
+		.container {
+            width : 80%;
+            margin : auto;
+        }
+        .writing-header {
+            position: relative;
+            margin: 20px 0 0 0;
+            padding-bottom: 10px;
+        }
+        .date{
+            text-align: right;
+            border-bottom: 1px solid #323232;
+            font-size: 13px;
+        }
+        .fr {
+            text-align: right;
+            font-size: 13px;
+        }
+        .side>a {
+        	text-decoration: none;
+        	color: black;
+        }
+        .idarea {
+        	background-color: white;
+        	border-style: none;
+        }
+        input{
+            width: 100%;
+            height: 35px;
+            margin: 5px 0px 10px 0px;
+            border: 1px solid #e9e8e8;
+            background: #f8f8f8;
+            outline-color: #e6e6e6;
+        }
+        
+        input :not([id=uploadfilef]) {
+        	padding: 8px;
+        }
+        
+        textarea {
+            width: 100%;
+            background: #f8f8f8;
+            margin: 0px 0px 10px 0px;
+            border: 1px solid #e9e8e8;
+            resize: none;
+            padding: 8px;
+            outline-color: #e6e6e6;
+        }
+        
+        .title {
+        	padding: 8px;
+        }
+        
+        .frm {
+            width:100%;
+        }
+
+        .btnf {
+        background-color: rgb(236, 236, 236);
+        border: none;
+        color: black;
+        padding: 6px 8px;
+        font-size: 16px;
+        cursor: pointer;
+        border-radius: 5px;
+        }
+
+        .btn:hover {
+        text-decoration: underline;
+        }
+        
+        pdmusic-table {
+        	border: 1px solid gray;
+        }
+        
+		/* 곡번호 */
+		.pdmusic-table td:nth-of-type(1) {
+			text-align:center;
+		    width: 15%;
+		}
+		/* 타이틀 */
+		.pdmusic-table td:nth-of-type(2) {
+		    width: 55%;
+		    text-align : left;
+		}
+		/* 작곡가 */
+		.pdmusic-table td:nth-of-type(3) {
+			text-align:center;
+		    width: 20%;
+		}
+
+		/* 듣기 */
+		.pdmusic-table td:nth-of-type(5) {
+		    width: 5%;
+		    padding : 5px;
+		}
+        
+		
+        
+        
+/* - boardetail - */ 
+
+		#reply span {
+			font-weight: 700;
+			font-size: 15px;
+			word-break: break-word;
+		}
+
+		.vote {
+			text-align: center;
+		}
+		
+		.vote > img {
+			width: 50px;
+			height: 50px;
+		}
+
+		
+		.vote :hover {
+			cursor: pointer;
+		
+		}
+		
+		.replybtnbox, .pdreplybtnbox {
+			margin-top: 10px;
+		}
+        
+        #replyfont {
+        	border-top: 1px solid #e9e8e8;
+        }
+        
+        .replydate {
+        	text-align: right;
+        }
+        
+        .reply-btn {
+        	text-align: right;
+        }
+        
+        .replycontent {
+        	display:inline-block;
+        	height: 50px;
+        }
+        
+        .contentarea {
+        	text-align: left;
+        }
+        
+		.hidden {
+		    display: none;
+		}
+        
+        

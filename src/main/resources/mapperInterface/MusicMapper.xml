@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mapperInterface.MusicMapper">
+
+	<sql id="msearchall">
+		<if test="keywords != null">
+			<bind name="keyVal" value="'%'+keyword+'%'" />
+		</if>
+		mname like #{keyVal}
+		or aname like #{keyVal}
+		or aname like #{keyVal}
+	</sql>
+	<select id="mmainsearch" resultType="vo.MusicVO">
+		select * from music
+		where
+		<include refid="msearchall"></include>
+		order by music_code desc
+		limit 0, 10
+	</select>
+
+	<!--  -->
+	<select id="musicTotal" resultType="vo.MusicVO">
+		select * from music
+		order by music_code asc
+	</select>
+	
+	<select id="musicPopular" resultType="vo.MusicVO">
+		select * from music
+		order by count desc
+	</select>
+	
+	<!-- ===== Music Cri Start ===== -->
+	<!-- Include category -->
+	<sql id="mcategory">
+		<if test="category!='종합'">
+			and mcategory = #{category}
+		</if>
+		<if test="category=='종합'">	</if>
+	</sql>	
+	
+	<select id="musicCri" resultType="vo.MusicVO">
+		select * from music
+		where music_code > 0 
+		<include refid="mcategory"></include>
+		limit #{sno}, #{rowsPerPage}
+	</select>
+	<!-- ===== Music Cri END ===== -->
+	
+	<select id="selectMusic" resultType="vo.MusicVO">
+		select * from music
+		where music_code=#{music_code}
+	</select>
+	
+	<select id="criTotalCount" resultType="int">
+		select count(*) from music
+	</select>
+	
+	<!-- ===== Music Search Start ===== -->
+	<!-- Include keyword -->
+	<sql id="msearch">
+		<if test="keyword != null">
+		<bind name="keyVal" value="'%'+keyword+'%'"/>
+		</if>
+
+		<choose>
+			<when test="searchType=='title'.toString()">
+				and mname like #{keyVal}
+			</when>
+			<when test="searchType=='artist'.toString()">
+				and aname like #{keyVal}
+			</when>
+			<when test="searchType=='lyrics'.toString()">
+				and lyrics like #{keyVal} 
+			</when>
+			<otherwise ></otherwise>
+		</choose>
+	</sql>
+	
+	<select id="searchMusic" resultType="vo.MusicVO">
+		select * from music
+		where music_code > 0
+		<include refid="msearch"></include>
+	</select>
+	
+	<select id="musicThema" resultType="vo.MusicVO">
+		select * from music
+		where thema like #{thema}
+	</select>
+	
+	<!-- ===== Music Search END ===== -->
+	
+	<insert id="musicInsert">
+		<selectKey keyProperty="music_code" resultType="int" order="BEFORE">
+			select
+			IFNULL(max(music_code), 0)+1 from music
+		</selectKey>
+		insert into music(music_code, mname, aname, album, mcategory, regdate, lyrics, imagefile)
+		values(#{music_code}, #{mname}, #{aname}, #{album}, #{mcategory}, #{regdate}, #{lyrics}, #{imagefile})
+	</insert>
+	
+	<update id="musicUpdate">
+		update music 
+		set mname = #{mname}, aname = #{aname}, album = #{album},
+		 mcategory = #{mcategory}, lyrics = #{lyrics}, imagefile = #{imagefile} 
+		where music_code=#{music_code}
+	</update>
+	
+	<update id="musicCountUp">
+		update music
+		set count = (count + 1)
+		where music_code = #{music_code}
+	</update>
+	
+	<delete id="musicDelete">
+		delete from music where music_code = #{music_code};
+		update music set music_code = (music_code - 1) where music_code > #{music_code}
+	</delete>
+	
+	<!-- ===== myList ===== -->
+	<select id="selectMyMusic" resultType="vo.MyListVO">
+		select * from mylist where id = #{id}
+	</select>
+	
+	<insert id="myList">
+		<selectKey keyProperty="no" resultType="int" order="BEFORE">
+			select
+			IFNULL(max(no), 0)+1 from mylist
+		</selectKey>
+		insert into mylist(no, music_code, id, mname, aname)
+		values(#{no}, #{music_code}, #{id}, #{mname}, #{aname}) 
+	</insert>
+	
+	<delete id="myListDelete">
+		delete from mylist where no = #{no}
+	</delete>
+	
+	<!-- ===== playList ===== -->
+	<select id="selectPlayMusic" resultType="vo.PlayListVO">
+		select * from playlist where id = #{id}
+	</select>
+	
+	<insert id="playList">
+		<selectKey keyProperty="no" resultType="int" order="BEFORE">
+			select
+			IFNULL(max(no), 0)+1 from playlist
+		</selectKey>
+		insert into playlist(no, music_code, id, mname, aname)
+		values(#{no}, #{music_code}, #{id}, #{mname}, #{aname}) 
+	</insert>
+	
+	<delete id="playListDelete">
+		delete from playlist where no = #{no}
+	</delete>
+	
+</mapper>
