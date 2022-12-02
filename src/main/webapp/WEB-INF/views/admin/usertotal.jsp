@@ -8,7 +8,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>main page</title>
-    <link rel="stylesheet" href="resources/myLib/bootstrap.min.css">
     <link rel="stylesheet" href="resources/myLib/main.css">
     <script src="resources/myLib/jquery-3.2.1.min.js"></script>
     <style type="text/css">

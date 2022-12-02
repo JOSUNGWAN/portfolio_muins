@@ -51,7 +51,7 @@ input[type=text][name=nickname],
 input[type=text][name=address],
 input[type=text][name=birthdate],
 input[type=text][name=phone] {
-	width: 100%;
+	width: 96%;
 	padding: 15px;
 	margin: 5px 0 5px 0;
 	border: none;
@@ -68,7 +68,7 @@ input[type=password] {
 }
 
 #user-section #email {
-	width: 100%;
+	width: 96%;
 	padding: 15px;
 	margin: 5px 0 10px 0;
 	border: none;
@@ -84,7 +84,7 @@ input[type=password] {
 }
 
 #email-update #email {
-	width : 68%;
+	width : 65%;
 }
 
 #usergradebox #usergrade {
@@ -92,7 +92,7 @@ input[type=password] {
 }
 
 #user-section #psydate {
-	width: 79%;
+	width: 71%;
 	padding: 15px;
 	margin: 5px 0 5px 0;
 	text-align: center;

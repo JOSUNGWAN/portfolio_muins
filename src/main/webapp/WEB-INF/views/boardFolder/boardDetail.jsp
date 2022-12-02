@@ -6,7 +6,6 @@
 <head>
 <meta charset="UTF-8">
 <title>bordDetail</title>
-<link rel="stylesheet" href="resources/myLib/bootstrap.min.css">
 <link rel="stylesheet" href="resources/myLib/main.css">
 <link rel="stylesheet" href="resources/myLib/board.css">
 <script src="resources/myLib/jquery-3.2.1.min.js"></script>
@@ -100,7 +99,7 @@
 						placeholder="댓글을 입력하세요(200자 이하)"></textarea>
 					<br>
 					<div class="reply-btn">
-						<button type="button" class="btn pull-right btn-success" onclick="getReplyF(${bselectone.seq})"
+						<button type="button" class="btn pull-right btn-view" onclick="getReplyF(${bselectone.seq})"
 							id="replyRegist">댓글보기</button>
 						<button type="button" class="btn pull-right btn-success" onclick="insertReply(${bselectone.seq},'${loginID}')"
 							id="replyRegist">등록</button>

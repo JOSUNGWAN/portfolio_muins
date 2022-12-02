@@ -8,7 +8,6 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>일반 게시판</title>
-<link rel="stylesheet" href="resources/myLib/bootstrap.min.css">
 <link rel="stylesheet" href="resources/myLib/main.css">
 <link rel="stylesheet" href="resources/myLib/board.css">
 <script src="resources/myLib/jquery-3.2.1.min.js"></script>
@@ -33,7 +32,7 @@
 </script>
 </head>
 
-<body>
+<body style="background-image: url('resources/music_image/pexels-stas-knop-5939401.jpg'); background-size: cover;">
 	<!-- header =============================================== -->
 	<jsp:include page="/WEB-INF/views/include/header.jsp" />
 	<!-- header =============================================== -->
@@ -44,7 +43,7 @@
 
 	<!-- main boardList =============================================== -->
 	<hr>
-	<main class="main">
+	<main class="main boardcolor">
 		<c:if test="${not empty message}">
 			${message}<br>
 		</c:if>

@@ -6,7 +6,6 @@
 <head>
 <meta charset="UTF-8">
 <title>ArithmeticException</title>
-<link rel="stylesheet" href="resources/myLib/bootstrap.min.css">
 <link rel="stylesheet" href="resources/myLib/main.css?after">
 <script src="resources/myLib/jquery-3.2.1.min.js"></script>
 <script defer src="resources/myLib/listform.js"></script>

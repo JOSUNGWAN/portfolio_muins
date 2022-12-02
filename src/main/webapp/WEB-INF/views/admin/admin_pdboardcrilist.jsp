@@ -8,7 +8,6 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>bordList</title>
-<link rel="stylesheet" href="resources/myLib/bootstrap.min.css">
 <link rel="stylesheet" href="resources/myLib/main.css">
 <link rel="stylesheet" href="resources/myLib/board.css">
 <script src="resources/myLib/jquery-3.2.1.min.js"></script>
@@ -33,7 +32,7 @@
 </script>
 </head>
 
-<body>
+<body style="background-image: url('resources/music_image/pexels-pixabay-159376.jpg'); background-size: cover;">
 	<!-- header =============================================== -->
 	<jsp:include page="/WEB-INF/views/include/header.jsp" />
 	<!-- header =============================================== -->
@@ -44,7 +43,7 @@
 
 	<!-- main boardList =============================================== -->
 	<hr>
-	<main class="main">
+	<main class="main boardcolor">
 		<h2>작곡 게시판</h2>
 		<div class="searchBar" id="searchBar">
 			<select name="searchType" id="searchType">
@@ -109,8 +108,8 @@
 			<!-- First, prev -->
 			<c:choose>
 				<c:when test="${pageMaker.prev && pageMaker.spageNo > 1}">
-					<a href="pdbcrilist${pageMaker.searchQuery(1)}"><img src="resources/icons/LeftArrow.jpg"></a>&nbsp; 
-					<a href="pdbcrilist${pageMaker.searchQuery(pageMaker.spageNo-1)}">&lt;</a>&nbsp;&nbsp;
+					<a href="adminpdBcrilist${pageMaker.searchQuery(1)}"><img src="resources/icons/LeftArrow.jpg"></a>&nbsp; 
+					<a href="adminpdBcrilist${pageMaker.searchQuery(pageMaker.spageNo-1)}">&lt;</a>&nbsp;&nbsp;
 								
 				</c:when>
 				<c:otherwise>
@@ -125,7 +124,7 @@
 					<font size="5" color="Orange">${i}</font>&nbsp;
 				</c:if>
 				<c:if test="${i != pageMaker.cri.currPage}">
-					<a href="pdbcrilist${pageMaker.searchQuery(i)}">${i}</a>&nbsp;
+					<a href="adminpdBcrilist${pageMaker.searchQuery(i)}">${i}</a>&nbsp;
 				</c:if>
 
 			</c:forEach>
@@ -134,8 +133,8 @@
 			<c:choose>
 				<c:when test="${pageMaker.next && pageMaker.epageNo > 0}">
 
-					<a href="pdbcrilist${pageMaker.searchQuery(pageMaker.epageNo+1)}">&nbsp;&nbsp;&gt;</a>
-					<a href="pdbcrilist${pageMaker.searchQuery(pageMaker.lastPageNo)}">&nbsp;<img src="resources/icons/RightArrow.jpg"></a>
+					<a href="adminpdBcrilist${pageMaker.searchQuery(pageMaker.epageNo+1)}">&nbsp;&nbsp;&gt;</a>
+					<a href="adminpdBcrilist${pageMaker.searchQuery(pageMaker.lastPageNo)}">&nbsp;<img src="resources/icons/RightArrow.jpg"></a>
 				</c:when>
 				<c:otherwise>
 					<font color="Gray">&nbsp;&nbsp;&gt;&nbsp;<img src="resources/icons/RightArrow.jpg"></font>

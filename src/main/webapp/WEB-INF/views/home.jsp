@@ -9,7 +9,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>home</title>
 <script src="resources/myLib/jquery-3.2.1.min.js"></script>
-<link rel="stylesheet" href="resources/myLib/bootstrap.min.css">
 <link rel="stylesheet" href="resources/myLib/main.css?after">
 <script defer src="resources/myLib/home.js"></script>
 <script type="text/javascript">
@@ -17,7 +16,7 @@
 </script>
 </head>
 
-<body class="home_body_gradiant">
+<body class="home_body_gradiant" style="background-image: url('resources/music_image/pexels-wendy-wei-1190297.jpg');">
 	<!-- header =============================================== -->
 	<jsp:include page="/WEB-INF/views/include/header.jsp" />
 	<!-- header =============================================== -->
@@ -58,7 +57,7 @@
 		<hr>
 		
 
-		<div class="main-container">
+		<div class="main-container-h">
 			<div class="container-box">
 				<h4>최신곡 List</h4>
 				<a href="musicCri" class="float-right font-small">더 보기</a>
@@ -102,7 +101,7 @@
 
 			<h4>Thema</h4>
 			<hr>
-			<div class="main-container">
+			<div class="main-container-h">
 				<ul>
 					<li class="btn thema-box" style="background: url('resources/images/themaImages/격렬한.jpg'),no-repeat,center;">
 					<a href="musicthema?thema=격렬">격렬</a>
@@ -131,13 +130,9 @@
 					</li>
 				</ul>
 			</div>
-		</div>
-
 		<hr>
-
 		<h4>추천 순위 게시판</h4>
 		<hr>
-		<div class="main-container">
 				<div class="container-box">
 				<h4>일반 게시판</h4>
 				<a href="bcrilist" class="float-right font-small">더 보기</a>

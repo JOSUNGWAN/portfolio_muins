@@ -9,6 +9,10 @@
     list-style: none;
 }
 
+h4{
+	font-size: 25px;
+}
+
 header,
 main,
 nav,
@@ -22,11 +26,15 @@ nav a {
     list-style: none;
     text-decoration: none;
     font-size : 0.9em;
+    
+    color: inherit;       /* 12-02 수정 */
 }
 
 a, li, span {
 	cursor : pointer;
 	text-decoration: none;
+	
+	color: inherit;        /* 12-02 수정 */
 }
 
 main {
@@ -35,7 +43,12 @@ main {
 }
 
 td {
-    font-size: 0.9em;
+    font-size: 1em;
+}
+
+.mm {
+	position: relative;
+	right: -40px;
 }
 
 /* ========== BODY END ========== */
@@ -109,6 +122,7 @@ td {
     line-height: 2px;
     font-size: 16px;
     color: black;
+    border: solid 2px black;
     
 }
 
@@ -121,6 +135,9 @@ td {
     justify-content: space-around;
     align-items: center;
     height : 45px;
+    
+    display: inline-flex; /* 12-02 수정 */
+   
 }
 
 .nav-start li, .nav-center li {
@@ -474,7 +491,16 @@ footer {
 }
 
 .border {
-	border: 1px solid black;
+	border: 1px solid rgb(154, 154, 235);
+    background-color: white;
+    color: rgb(60, 60, 235);
+    width: 60px;
+	cursor: pointer;
+}
+
+.border:hover {
+	background-color: rgb(93, 93, 240);
+	color: white;
 }
 
 
@@ -492,13 +518,16 @@ footer {
     border-top: solid black 2px;
     border-bottom: solid black 2px;
     overflow: hidden;
+    /* border-top: solid white 2px; */
 }
 
 .main-table td {
     height: 30px;
     border-top: solid lightgray 1px;
-    border-bottom: solid lightgray 1px;
+   /*  border-bottom: solid lightgray 1px; */ /* 12-02 수정 */
     overflow: hidden;
+    
+    /* ont-size: 18px; */
 }
 
 .main-table tr:nth-of-type(n+2):hover {
@@ -507,6 +536,7 @@ footer {
 
 .main-table {
     width: 100%;
+    color: white;
 }
 
 .main-table td:nth-of-type(1) {
@@ -530,13 +560,13 @@ footer {
 	font-size : 0.9em;
 	text-align : center;
     height: 50px;
-    border-top: solid black 2px;
+    /* border-top: solid black 2px; */ /* 12-02 수정 */
     border-bottom: solid black 2px;
 }
 
 .listform-table td {
     height: 30px;
-    border-top: solid lightgray 1px;
+    /* border-top: solid lightgray 1px; */  /* 12-02 수정 */
     border-bottom: solid lightgray 1px;
 }
 
@@ -593,6 +623,19 @@ footer {
 /* === TABLE END */
 
 /* === Container START === */
+.main-container-h {
+    position: relative;
+    width: 100%;
+    padding: 20px 0;
+    margin-bottom: 30px;
+    justify-content: Center;
+    text-align: center;
+    overflow-x: hidden;
+    white-space: nowrap;
+
+    background-color: rgb(0, 0, 0, 0.8);
+    color: white;
+}
 .main-container {
     position: relative;
     width: 100%;
@@ -602,6 +645,11 @@ footer {
     text-align: center;
     overflow-x: hidden;
     white-space: nowrap;
+    
+    right: -17px; 
+    background-color: rgb(0, 0, 0, 0.8);
+    color: white; 
+
 }
 
 .container-box {
@@ -644,9 +692,14 @@ footer {
     display: flex;
     justify-content: space-evenly;
     margin-top: 20px;
-    margin-bottom: -10px;
-    border-top: 1px solid lightgray;
-    border-bottom: 1px solid lightgray;
+   /*  margin-bottom: -10px; */
+    border-top: 1px solid lightgray;    /* 12-02 수정 */
+    border-bottom: 1px solid lightgray; 
+    
+    position: relative;
+    right: -17px; 
+    background-color: rgb(0, 0, 0, 0.8);
+    color: white;
 }
 
 .category-bar {
@@ -655,6 +708,7 @@ footer {
     width: 80px;
     height: 40px;
     line-height: 40px;
+    cursor: pointer;                      /* 12-02 수정 */
 }
 
 .category-bar:hover {
@@ -667,6 +721,10 @@ footer {
     display: flex;
     width: 100%;
     justify-content: right;
+    
+    right: -17px;          /* 12-02 수정 */
+    background-color: rgb(0, 0, 0, 0.8);
+    color: white;
 }
 .search-container #searchForm {
     width: 50%;
@@ -679,15 +737,19 @@ footer {
 
 .search-container * {
     margin: 0 5px;
-    height : 40px;
+    height : 30px;
+}
+
+.search-container #keyword {
+    height : 26px;
 }
 
 .paging-container * {
-	color : black;
+	color : white;
 	text-align : center;
 }
 .paging-container a {
-	color : black;
+	color : white;
 }
 /* ===== */
 
@@ -698,10 +760,13 @@ footer {
     flex-wrap: nowrap;
     justify-content: flex-start;
     width: calc((100% - 1050px) / 2);
-    height: calc(100% - 200px);
+    height: calc(100% - 262px);
     margin: 0 auto;
     padding: 20px;
     border: 1px solid lightgray;
+    
+    background-color: rgb(0, 0, 0, 0.8);
+    color: white;
 }
 
 .aside-image {
@@ -715,13 +780,13 @@ footer {
 
 .aside-title {
     display: inline-block;
-    height: 2%;
+    height: 3%;
     width: 100%;
 }
 
 .aside-artist {
     display: inline-block;
-    height: 2%;
+    height: 3%;
     width: 100%;
 }
 

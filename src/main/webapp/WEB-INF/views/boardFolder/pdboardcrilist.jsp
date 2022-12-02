@@ -8,7 +8,6 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>bordList</title>
-<link rel="stylesheet" href="resources/myLib/bootstrap.min.css">
 <link rel="stylesheet" href="resources/myLib/main.css">
 <link rel="stylesheet" href="resources/myLib/board.css">
 <script src="resources/myLib/jquery-3.2.1.min.js"></script>
@@ -33,7 +32,7 @@
 </script>
 </head>
 
-<body>
+<body style="background-image: url('resources/music_image/pexels-pixabay-159376.jpg'); background-size: cover;">
 	<!-- header =============================================== -->
 	<jsp:include page="/WEB-INF/views/include/header.jsp" />
 	<!-- header =============================================== -->
@@ -44,7 +43,7 @@
 
 	<!-- main boardList =============================================== -->
 	<hr>
-	<main class="main">
+	<main class="main boardcolor">
 		<h2>작곡 게시판</h2>
 		<div class="searchBar" id="searchBar">
 			<select name="searchType" id="searchType">

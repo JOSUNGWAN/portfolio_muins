@@ -6,7 +6,6 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="resources/myLib/bootstrap.min.css">
 <link rel="stylesheet" href="resources/myLib/main.css">
 <link rel="stylesheet" href="resources/myLib/board.css">
 <script src="resources/myLib/jquery-3.2.1.min.js"></script>
@@ -20,7 +19,7 @@
 	</div>
 		<table class="table">
 			<tr>
-				<td>
+				<td class="replycolor">
 					<!-- Comments Form -->
 					<div id="reply">
 						<c:forEach items="${pdreplyListF}" var="pdreplyListF">

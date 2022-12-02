@@ -9,7 +9,6 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>pdbordDetail</title>
-<link rel="stylesheet" href="resources/myLib/bootstrap.min.css">
 <link rel="stylesheet" href="resources/myLib/main.css">
 <link rel="stylesheet" href="resources/myLib/board.css">
 <script src="resources/myLib/jquery-3.2.1.min.js"></script>
@@ -56,9 +55,9 @@
 								<th>듣기</th>
 							</tr>
 							<tr>
-								<td>1</td>
+								<td class="listentitleColor">${pdbselectone.seq}</td>
 								<td><span class="listentitle">${pdbselectone.uploadfile}</span></td>
-								<td>${pdbselectone.id}</td>
+								<td class="listentitleColor">${pdbselectone.id}</td>
 							<c:if test="${userGrade=='프리미엄'}">
 			                     <td>
 			                     <span onclick="playMusic2(${pdbselectone.seq})" title="${pdbselectone.uploadfile}">
@@ -128,7 +127,7 @@
 						placeholder="댓글을 입력하세요(200자 이하)"></textarea>
 					<br>
 					<div class="reply-btn">
-						<button type="button" class="btn pull-right btn-success" onclick="getpdReplyF(${pdbselectone.seq})"
+						<button type="button" class="btn pull-right btn-view" onclick="getpdReplyF(${pdbselectone.seq})"
 							id="replyRegist">댓글보기</button>
 						<button type="button" class="btn pull-right btn-success" onclick="pdinsertReply(${pdbselectone.seq},'${loginID}')"
 							id="replyRegist">등록</button>

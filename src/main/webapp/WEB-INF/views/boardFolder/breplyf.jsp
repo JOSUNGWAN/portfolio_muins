@@ -6,7 +6,6 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="resources/myLib/bootstrap.min.css">
 <link rel="stylesheet" href="resources/myLib/main.css">
 <link rel="stylesheet" href="resources/myLib/board.css">
 <script src="resources/myLib/jquery-3.2.1.min.js"></script>
@@ -20,7 +19,7 @@
 	</div>
 		<table class="table">
 			<tr>
-				<td>
+				<td class="replycolor">
 					<!-- Comments Form -->
 					<div id="reply">
 						<c:forEach items="${replyListF}" var="replyListF">
@@ -42,7 +41,7 @@
 										</c:if>
 										<c:if test="${loginID != replyListF.id}">
 											<a id="modifyBtnr" class="btnf btn-modify aaa">
-												<span class="fa fa-edit"></span>댓글
+												<span class="fa fa-edit">댓글</span>
 											</a><br>
 										</c:if>
 									</div>

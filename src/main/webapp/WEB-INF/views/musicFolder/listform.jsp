@@ -9,7 +9,6 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>music list</title>
-<link rel="stylesheet" href="resources/myLib/bootstrap.min.css">
 <link rel="stylesheet" href="resources/myLib/main.css?after">
 <script src="resources/myLib/jquery-3.2.1.min.js"></script>
 <script defer src="resources/myLib/listform.js"></script>
@@ -18,7 +17,7 @@
 </script>
 </head>
 
-<body>
+<body style="background-image: url('resources/music_image/concert.jpg'); background-size: cover;">
 	<!-- header =============================================== -->
 	<jsp:include page="/WEB-INF/views/include/header.jsp" />
 	<!-- header =============================================== -->
@@ -78,14 +77,13 @@
 			<div class="category-bar" title="발라드">발라드</div>
 			<div class="category-bar" title="힙합">힙합</div>
 			<div class="category-bar" title="재즈">재즈</div>
-			<div class="category-bar" title="R/B">R/B</div>
+			<div class="category-bar" title="R/B">R&B</div>
 			<div class="category-bar" title="디스코">디스코</div>
 			<div class="category-bar" title="락">락</div>
 			<div class="category-bar" title="트로트">트로트</div>
 			<div class="category-bar" title="일렉">일렉</div>
 			<div class="category-bar" title="댄스">댄스</div>
 		</section>
-		<hr>
 
 		<section class="search-container">
 			<select name="rowsCount" id="rowsCount" style="width: 150px">
@@ -142,7 +140,7 @@
 								<td>${vs.count + pageMaker.cri.currPage * 100 - 100}</td>
 							</c:if>
 							
-							<td><img class="hidden" alt="#" src="${music.imagefile}">${music.mname}</td>
+							<td><img class="hidden" alt="#" src="${music.imagefile}"><span class="mm">${music.mname}</span></td>
 							<td>${music.aname}</td>
 							<td>${music.count}</td>
 							
