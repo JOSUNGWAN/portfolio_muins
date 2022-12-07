@@ -18,6 +18,8 @@ Apache Tomcat 9.0
 ### Front-End
 Html5, CSS3, Javascript, JSP
 Jquery, Ajax
+
+### API
 KaKao Pay
 Spring Mail
 
