@@ -20,8 +20,7 @@ Html5, CSS3, Javascript, JSP
 Jquery, Ajax
 
 ### API
-KaKao Pay
-Spring Mail
+KaKao Pay, Spring Mail
 
 ### Back-End
 Language : Java
