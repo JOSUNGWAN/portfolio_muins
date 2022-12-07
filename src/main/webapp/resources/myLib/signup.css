@@ -16,11 +16,9 @@ hr {
 }
 
 .container {
-	position : absolute;
-	top : 0;
-	right : 0;
+	/* position : absolute; */
 	border: solid 1px lightgray;
-	margin: 50px;
+	/* margin: 50px; */
 	width: 500px;
 	max-width: 500px;
 	padding: 16px;

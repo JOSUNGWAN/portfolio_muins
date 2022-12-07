@@ -8,13 +8,13 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>일반 게시판</title>
-<link rel="stylesheet" href="resources/myLib/main.css">
+<link rel="stylesheet" href="resources/myLib/main.css?after">
 <link rel="stylesheet" href="resources/myLib/board.css">
 <script src="resources/myLib/jquery-3.2.1.min.js"></script>
 <script defer src="resources/myLib/listform.js"></script>
 </head>
 
-<body>
+<body style="background-image: url('resources/music_image/board-img.jpg'); background-size: cover;">
 	<!-- header =============================================== -->
 	<jsp:include page="/WEB-INF/views/include/header.jsp" />
 	<!-- header =============================================== -->
@@ -28,7 +28,7 @@
 	<main class="main">
 		<h2>music</h2>
 		<a href="musicCri">music</a>
-		<div class="main-container">
+		<div class="main-container-m">
 			<div class="thema-container">
 				<table class="listform-table">
 					<tr>
@@ -100,7 +100,7 @@
 
 		<h2>일반 게시판</h2>
 		<a href="bcrilist">게시판 으로..</a>
-		<div class="board_maincontainer">
+		<div class="board_maincontainer boardcolor">
 			<div class="board_table">
 				<table width="100%">
 					<tr height="30">
@@ -137,7 +137,7 @@
 
 		<h2>작곡 게시판</h2>
 		<a href="pdbcrilist">작곡 게시판 으로..</a>
-		<div class="board_maincontainer">
+		<div class="board_maincontainer boardcolor">
 			<div class="board_table">
 				<table width="100%">
 					<tr height="30">

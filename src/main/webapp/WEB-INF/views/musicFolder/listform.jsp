@@ -192,42 +192,42 @@
 			</div>
 			
 			<c:if test="${empty hidden}">
-				<!-- Cri_Page -->
-				<div class="paging-container">
-					<!-- First, prev -->
-					<c:choose>
-						<c:when test="${pageMaker.prev && pageMaker.spageNo > 1}">
-							<a href="musicCri${pageMaker.searchQuery(1)}"><img src="resources/icons/LeftArrow.jpg"></a>&nbsp; 
-							<a href="musicCri${pageMaker.searchQuery(pageMaker.spageNo-1)}">&lt;</a>&nbsp;&nbsp;
-						</c:when>
-						<c:otherwise>
-							<font color="Gray"><img src="resources/icons/LeftArrow.jpg">&nbsp;&lt;&nbsp;&nbsp;</font>
-						</c:otherwise>
-					</c:choose>
+            <!-- Cri_Page -->
+            <div class="paging-container">
+               <!-- First, prev -->
+               <c:choose>
+                  <c:when test="${pageMaker.prev && pageMaker.spageNo > 1}">
+                     <a href="musicCri${pageMaker.searchQuery(1)}"><img src="resources/icons/LeftArrow.jpg"></a>&nbsp; 
+                     <a href="musicCri${pageMaker.searchQuery(pageMaker.spageNo-1)}"><img src="resources/icons/Left-Arrow.png"></a>&nbsp;&nbsp;
+                  </c:when>
+                  <c:otherwise>
+                     <font color="Gray"><img src="resources/icons/LeftArrow.jpg">&nbsp;<img src="resources/icons/Left-Arrow.png">&nbsp;&nbsp;</font>
+                  </c:otherwise>
+               </c:choose>
 
-					<!-- Displag PageNo -->
-					<c:forEach var="i" begin="${pageMaker.spageNo}"
-						end="${pageMaker.epageNo}">
-						<c:if test="${i == pageMaker.cri.currPage}">
-							<font size="5" color="Orange">${i}</font>&nbsp;
-						</c:if>
-						<c:if test="${i != pageMaker.cri.currPage}">
-							<a href="musicCri${pageMaker.searchQuery(i)}">${i}</a>&nbsp;
-						</c:if>
-					</c:forEach>
+               <!-- Displag PageNo -->
+               <c:forEach var="i" begin="${pageMaker.spageNo}"
+                  end="${pageMaker.epageNo}">
+                  <c:if test="${i == pageMaker.cri.currPage}">
+                     <font size="5" color="Orange">${i}</font>&nbsp;
+                  </c:if>
+                  <c:if test="${i != pageMaker.cri.currPage}">
+                     <a href="musicCri${pageMaker.searchQuery(i)}">${i}</a>&nbsp;
+                  </c:if>
+               </c:forEach>
 
-					<!-- Next, Last -->
-					<c:choose>
-						<c:when test="${pageMaker.next && pageMaker.epageNo > 0}">
-							<a href="musicCri${pageMaker.searchQuery(pageMaker.epageNo+1)}">&nbsp;&nbsp;&gt;</a>
-							<a href="musicCri${pageMaker.searchQuery(pageMaker.lastPageNo)}">&nbsp;<img src="resources/icons/RightArrow.jpg"></a>
-						</c:when>
-						<c:otherwise>
-							<font color="Gray">&nbsp;&nbsp;&gt;&nbsp;<img src="resources/icons/RightArrow.jpg"></font>
-						</c:otherwise>
-					</c:choose>
-				</div>
-			</c:if>
+               <!-- Next, Last -->
+               <c:choose>
+                  <c:when test="${pageMaker.next && pageMaker.epageNo > 0}">
+                     <a href="musicCri${pageMaker.searchQuery(pageMaker.epageNo+1)}">&nbsp;&nbsp;<img src="resources/icons/Right-Arrow.png"></a>
+                     <a href="musicCri${pageMaker.searchQuery(pageMaker.lastPageNo)}">&nbsp;<img src="resources/icons/RightArrow.jpg"></a>
+                  </c:when>
+                  <c:otherwise>
+                     <font color="Gray">&nbsp;&nbsp;<img src="resources/icons/Right-Arrow.png">&nbsp;<img src="resources/icons/RightArrow.jpg"></font>
+                  </c:otherwise>
+               </c:choose>
+            </div>
+         </c:if>
 
 		</div>
 	</main>

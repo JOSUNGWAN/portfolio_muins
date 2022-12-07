@@ -32,7 +32,7 @@
 </script>
 </head>
 
-<body style="background-image: url('resources/music_image/pexels-stas-knop-5939401.jpg'); background-size: cover;">>
+<body style="background-image: url('resources/music_image/board-img.jpg'); background-size: cover;">
 	<!-- header =============================================== -->
 	<jsp:include page="/WEB-INF/views/include/header.jsp" />
 	<!-- header =============================================== -->
@@ -109,11 +109,11 @@
 			<c:choose>
 				<c:when test="${pageMaker.prev && pageMaker.spageNo > 1}">
 					<a href="adminBcrilist${pageMaker.searchQuery(1)}"><img src="resources/icons/LeftArrow.jpg"></a>&nbsp; 
-					<a href="adminBcrilist${pageMaker.searchQuery(pageMaker.spageNo-1)}">&lt;</a>&nbsp;&nbsp;
+					<a href="adminBcrilist${pageMaker.searchQuery(pageMaker.spageNo-1)}"><img src="resources/icons/LeftArrow.jpg"></a>&nbsp;&nbsp;
 								
 				</c:when>
 				<c:otherwise>
-					<font color="Gray"><img src="resources/icons/LeftArrow.jpg">&nbsp;&lt;&nbsp;&nbsp;</font>
+					<font color="Gray"><img src="resources/icons/LeftArrow.jpg">&nbsp;<img src="resources/icons/LeftArrow.jpg">&nbsp;&nbsp;</font>
 				</c:otherwise>
 			</c:choose>
 
@@ -133,11 +133,11 @@
 			<c:choose>
 				<c:when test="${pageMaker.next && pageMaker.epageNo > 0}">
 
-					<a href="adminBcrilist${pageMaker.searchQuery(pageMaker.epageNo+1)}">&nbsp;&nbsp;&gt;</a>
+					<a href="adminBcrilist${pageMaker.searchQuery(pageMaker.epageNo+1)}">&nbsp;&nbsp;<img src="resources/icons/RightArrow.jpg"></a>
 					<a href="adminBcrilist${pageMaker.searchQuery(pageMaker.lastPageNo)}">&nbsp;<img src="resources/icons/RightArrow.jpg"></a>
 				</c:when>
 				<c:otherwise>
-					<font color="Gray">&nbsp;&nbsp;&gt;&nbsp;<img src="resources/icons/RightArrow.jpg"></font>
+					<font color="Gray">&nbsp;&nbsp;<img src="resources/icons/RightArrow.jpg">&nbsp;<img src="resources/icons/RightArrow.jpg"></font>
 				</c:otherwise>
 			</c:choose>
 

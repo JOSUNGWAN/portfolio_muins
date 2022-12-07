@@ -14,7 +14,7 @@
 		<div id="footer-title">title 제목</div>
 
 		<div id="footer-audio">
-			<audio  id="current-audio" controls muted >
+			<audio  id="current-audio" controls>
 			</audio>
 			
 			<c:if test="${not empty loginID }">

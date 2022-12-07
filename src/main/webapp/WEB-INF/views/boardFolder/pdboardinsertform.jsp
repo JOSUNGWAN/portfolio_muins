@@ -46,11 +46,10 @@
 				<textarea name="content" rows="20" placeholder="내용을 입력해 주세요."></textarea>
 				<br>
 				<button type="submit" id="writeBtn" class="btnf btn-write">등록</button>
-				<button type="reset" id="resetBtn" class="btnf btn-reset">취소</button>
+				<button type="reset" id="resetBtn" class="btnf btn-reset" onclick="goBack()">취소</button>
 
 			</form>
 		</div>
-		<hr>
 	</main>
 </body>
 <!-- main boardList =============================================== -->

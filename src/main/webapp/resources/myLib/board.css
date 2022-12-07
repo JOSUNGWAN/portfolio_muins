@@ -135,15 +135,12 @@
         	color: white;
         }
         .idarea {
+        	width:80%;
         	background-color: white;
         	border-style: none;
         }
         input:not([class=form-control]){
-            /* width: 100%; */
             height: 27px;
-            /* margin: 5px 0px 10px 0px; */
-            border: 1px solid #e9e8e8;
-            background: #f8f8f8;
             outline-color: #e6e6e6;
         }
         
@@ -166,10 +163,8 @@
         .title {
         	padding: 8px;
         	width: 100%;
-        }
-        
-        .frm {
-            width:100%;
+        	border: 1px solid #e9e8e8;
+            background: #f8f8f8;
         }
 
         .btnf {

@@ -103,13 +103,6 @@ $(function() {
 		$('#footer-up').addClass('hidden')
 	}); // click
 
-	$('#play-music').click(function() {
-		STR2 = $(this).attr('title');
-		curAudio.src = STR1 + STR2 + STR3;
-		curAudio.currentTime = 0;
-		curAudio.play();
-		console.log($(this));
-	}); // click play music
 
 	curAudio.addEventListener("ended", function() {
 		musicIndex += 1;

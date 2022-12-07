@@ -8,7 +8,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>일반 게시판</title>
-<link rel="stylesheet" href="resources/myLib/main.css">
+<link rel="stylesheet" href="resources/myLib/main.css?after">
 <link rel="stylesheet" href="resources/myLib/board.css">
 <script src="resources/myLib/jquery-3.2.1.min.js"></script>
 <script defer src="resources/myLib/board.js"></script>
@@ -32,7 +32,7 @@
 </script>
 </head>
 
-<body style="background-image: url('resources/music_image/pexels-stas-knop-5939401.jpg'); background-size: cover;">
+<body style="background-image: url('resources/music_image/board-img.jpg'); background-size: cover;">
 	<!-- header =============================================== -->
 	<jsp:include page="/WEB-INF/views/include/header.jsp" />
 	<!-- header =============================================== -->
@@ -103,43 +103,43 @@
 		</div>
 		<!-- Cri_Page -->
 		<div align="center">
-			<!-- First, prev -->
-			<c:choose>
-				<c:when test="${pageMaker.prev && pageMaker.spageNo > 1}">
-					<a href="bcrilist${pageMaker.searchQuery(1)}"><img src="resources/icons/LeftArrow.jpg"></a>&nbsp; 
-					<a href="bcrilist${pageMaker.searchQuery(pageMaker.spageNo-1)}">&lt;</a>&nbsp;&nbsp;
-								
-				</c:when>
-				<c:otherwise>
-					<font color="Gray"><img src="resources/icons/LeftArrow.jpg">&nbsp;&lt;&nbsp;&nbsp;</font>
-				</c:otherwise>
-			</c:choose>
+         <!-- First, prev -->
+         <c:choose>
+            <c:when test="${pageMaker.prev && pageMaker.spageNo > 1}">
+               <a href="bcrilist${pageMaker.searchQuery(1)}"><img src="resources/icons/LeftArrow.jpg"></a>&nbsp; 
+               <a href="bcrilist${pageMaker.searchQuery(pageMaker.spageNo-1)}"><img src="resources/icons/Left-Arrow.png"></a>&nbsp;&nbsp;
+                        
+            </c:when>
+            <c:otherwise>
+               <font color="Gray"><img src="resources/icons/LeftArrow.jpg">&nbsp;<img src="resources/icons/Left-Arrow.png">&nbsp;&nbsp;</font>
+            </c:otherwise>
+         </c:choose>
 
-			<!-- Displag PageNo -->
-			<c:forEach var="i" begin="${pageMaker.spageNo}"
-				end="${pageMaker.epageNo}">
-				<c:if test="${i == pageMaker.cri.currPage}">
-					<font size="5" color="Orange">${i}</font>&nbsp;
-				</c:if>
-				<c:if test="${i != pageMaker.cri.currPage}">
-					<a href="bcrilist${pageMaker.searchQuery(i)}">${i}</a>&nbsp;
-				</c:if>
+         <!-- Displag PageNo -->
+         <c:forEach var="i" begin="${pageMaker.spageNo}"
+            end="${pageMaker.epageNo}">
+            <c:if test="${i == pageMaker.cri.currPage}">
+               <font size="5" color="Orange">${i}</font>&nbsp;
+            </c:if>
+            <c:if test="${i != pageMaker.cri.currPage}">
+               <a href="bcrilist${pageMaker.searchQuery(i)}">${i}</a>&nbsp;
+            </c:if>
 
-			</c:forEach>
+         </c:forEach>
 
-			<!-- Next, Last -->
-			<c:choose>
-				<c:when test="${pageMaker.next && pageMaker.epageNo > 0}">
+         <!-- Next, Last -->
+         <c:choose>
+            <c:when test="${pageMaker.next && pageMaker.epageNo > 0}">
 
-					<a href="bcrilist${pageMaker.searchQuery(pageMaker.epageNo+1)}">&nbsp;&nbsp;&gt;</a>
-					<a href="bcrilist${pageMaker.searchQuery(pageMaker.lastPageNo)}">&nbsp;<img src="resources/icons/RightArrow.jpg"></a>
-				</c:when>
-				<c:otherwise>
-					<font color="Gray">&nbsp;&nbsp;&gt;&nbsp;<img src="resources/icons/RightArrow.jpg"></font>
-				</c:otherwise>
-			</c:choose>
+               <a href="bcrilist${pageMaker.searchQuery(pageMaker.epageNo+1)}">&nbsp;&nbsp;<img src="resources/icons/Right-Arrow.png"></a>
+               <a href="bcrilist${pageMaker.searchQuery(pageMaker.lastPageNo)}">&nbsp;<img src="resources/icons/RightArrow.jpg"></a>
+            </c:when>
+            <c:otherwise>
+               <font color="Gray">&nbsp;&nbsp;<img src="resources/icons/Right-Arrow.png">&nbsp;<img src="resources/icons/RightArrow.jpg"></font>
+            </c:otherwise>
+         </c:choose>
 
-		</div>
+      </div>
 		<div class="board-footmenu">
 			<div class="right">
 				<c:if test="${not empty loginID}">

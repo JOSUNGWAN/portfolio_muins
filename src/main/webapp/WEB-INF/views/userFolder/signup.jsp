@@ -20,7 +20,6 @@
 			width: 80%;
 			height: 1280px;
 			position: relative;
-		    background-image: url("resources/music_image/pexels-pixabay-159376.jpg");
 		    background-position: left;
 		    background-repeat: no-repeat;
 		    background-size: 70% 100%;    
@@ -28,7 +27,7 @@
     </style>
 </head>
 
-<body>
+<body style="background-image: url('resources/music_image/board-img.jpg'); background-size: cover;">
     <main class="bg">
         <div class="container">
             <form action="signUp" method="post">

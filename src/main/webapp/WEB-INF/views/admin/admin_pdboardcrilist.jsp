@@ -109,11 +109,11 @@
 			<c:choose>
 				<c:when test="${pageMaker.prev && pageMaker.spageNo > 1}">
 					<a href="adminpdBcrilist${pageMaker.searchQuery(1)}"><img src="resources/icons/LeftArrow.jpg"></a>&nbsp; 
-					<a href="adminpdBcrilist${pageMaker.searchQuery(pageMaker.spageNo-1)}">&lt;</a>&nbsp;&nbsp;
+					<a href="adminpdBcrilist${pageMaker.searchQuery(pageMaker.spageNo-1)}"><img src="resources/icons/LeftArrow.jpg"></a>&nbsp;&nbsp;
 								
 				</c:when>
 				<c:otherwise>
-					<font color="Gray"><img src="resources/icons/LeftArrow.jpg">&nbsp;&lt;&nbsp;&nbsp;</font>
+					<font color="Gray"><img src="resources/icons/LeftArrow.jpg">&nbsp;<img src="resources/icons/LeftArrow.jpg">&nbsp;&nbsp;</font>
 				</c:otherwise>
 			</c:choose>
 
@@ -133,11 +133,11 @@
 			<c:choose>
 				<c:when test="${pageMaker.next && pageMaker.epageNo > 0}">
 
-					<a href="adminpdBcrilist${pageMaker.searchQuery(pageMaker.epageNo+1)}">&nbsp;&nbsp;&gt;</a>
+					<a href="adminpdBcrilist${pageMaker.searchQuery(pageMaker.epageNo+1)}">&nbsp;&nbsp;<img src="resources/icons/RightArrow.jpg"></a>
 					<a href="adminpdBcrilist${pageMaker.searchQuery(pageMaker.lastPageNo)}">&nbsp;<img src="resources/icons/RightArrow.jpg"></a>
 				</c:when>
 				<c:otherwise>
-					<font color="Gray">&nbsp;&nbsp;&gt;&nbsp;<img src="resources/icons/RightArrow.jpg"></font>
+					<font color="Gray">&nbsp;&nbsp;<img src="resources/icons/RightArrow.jpg">&nbsp;<img src="resources/icons/RightArrow.jpg"></font>
 				</c:otherwise>
 			</c:choose>
 		</div>

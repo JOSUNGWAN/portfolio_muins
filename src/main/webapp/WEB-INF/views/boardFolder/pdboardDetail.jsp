@@ -61,13 +61,13 @@
 							<c:if test="${userGrade=='프리미엄'}">
 			                     <td>
 			                     <span onclick="playMusic2(${pdbselectone.seq})" title="${pdbselectone.uploadfile}">
-			                     <img   alt="듣기" src="resources/icons/play-button.png"></span>
+			                     <img   alt="듣기" src="resources/icons/play-button2.png"></span>
 			                     </td>
 			                </c:if>
 			                <c:if test="${userGrade!='프리미엄'}">
 			                     <td>
 			                     <span title="${pdbselectone.uploadfile}">
-			                     <img   alt="듣기" src="resources/icons/play-button.png"></span>
+			                     <img   alt="듣기" src="resources/icons/play-button2.png"></span>
 			                     </td>
 		                    </c:if>
 							</tr>
